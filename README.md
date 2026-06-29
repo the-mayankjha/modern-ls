@@ -15,7 +15,15 @@ A beautiful, extremely fast, modern replacement for Unix `ls`, written in Go.
 
 ## Installation
 
-See [INSTALL.md](INSTALL.md) for full instructions on downloading the binary or installing via Go.
+See [INSTALL.md](INSTALL.md) for detailed instructions across all platforms.
+
+### Quick Start (macOS & Linux)
+If you have Go installed, you can instantly install `modern-ls`:
+```bash
+go install github.com/the-mayankjha/modern-ls/cmd/modern-ls@latest
+```
+
+Alternatively, download the pre-compiled binaries from the [GitHub Releases](https://github.com/the-mayankjha/modern-ls/releases) page for Windows, macOS, and Linux, extract them, and move them to your system `PATH`.
 
 ## Features & Usage
 
