@@ -45,3 +45,48 @@ changelog:
     exclude:
       - '^docs:'
       - '^test:'
+
+nfpms:
+  - file_name_template: '{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}'
+    homepage: "https://github.com/the-mayankjha/modern-ls"
+    description: "A beautiful, extremely fast, modern replacement for Unix ls."
+    maintainer: "Mayank Jha"
+    license: "MIT"
+    formats:
+      - deb
+      - rpm
+      - archlinux
+
+brews:
+  - repository:
+      owner: the-mayankjha
+      name: homebrew-tap
+    commit_author:
+      name: goreleaserbot
+      email: goreleaser@mayankjha.com
+    homepage: "https://github.com/the-mayankjha/modern-ls"
+    description: "A beautiful, extremely fast, modern replacement for Unix ls."
+    license: "MIT"
+
+scoops:
+  - repository:
+      owner: the-mayankjha
+      name: scoop-bucket
+    commit_author:
+      name: goreleaserbot
+      email: goreleaser@mayankjha.com
+    homepage: "https://github.com/the-mayankjha/modern-ls"
+    description: "A beautiful, extremely fast, modern replacement for Unix ls."
+    license: "MIT"
+
+winget:
+  - name: modern-ls
+    publisher: the-mayankjha
+    license: MIT
+    short_description: "A beautiful, extremely fast, modern replacement for Unix ls."
+    repository:
+      owner: the-mayankjha
+      name: winget-pkgs
+    commit_author:
+      name: goreleaserbot
+      email: goreleaser@mayankjha.com
