@@ -30,7 +30,8 @@
 ### macOS / Linux (Homebrew)
 ```bash
 brew tap the-mayankjha/homebrew-tap
-brew install modern-ls
+brew trust the-mayankjha/tap
+brew install --cask modern-ls
 ```
 
 ### Windows (Scoop)
