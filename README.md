@@ -32,7 +32,22 @@
 `modern-ls` ships with a vibrant set of color themes out of the box, with `catppuccin` set as the default. Every single file, directory, and Git status is color-coordinated for maximum readability!
 
 <!-- ADD YOUR THEMES IMAGE HERE -->
-![Themes Preview](./assets/themes-preview.png)
+<!-- Catppuccin(default) -->
+<img width="1470" height="228" alt="image" src="https://github.com/user-attachments/assets/600a67d6-0f41-4e17-a4de-d8ca5a5ac42f" />
+
+<!--rosepin -->
+
+<img width="1466" height="208" alt="image" src="https://github.com/user-attachments/assets/aa45b0fa-522a-4e23-807a-5f880c6388ce" />
+
+
+<!-- tokyonight -->
+<img width="1470" height="217" alt="image" src="https://github.com/user-attachments/assets/b52a7702-9e13-49f4-93ed-df47cf542834" />
+
+
+<!-- gruvbox -->
+<img width="1470" height="215" alt="image" src="https://github.com/user-attachments/assets/f667b8dd-0abb-4193-8dc2-05d8a84fb447" />
+
+
 
 To switch themes on the fly, just use the `--theme` flag:
 ```bash
@@ -46,7 +61,8 @@ modern-ls --theme=tokyonight
 The application features deep integration with both standard Unicode emojis and Nerd Font icons. Whether it's a `📦` for `package.json`, a `🎥` for video files, or a `🔑` for your `.env` secrets—`modern-ls` renders them natively right inside your terminal.
 
 <!-- ADD YOUR EMOJIS/NERD FONTS IMAGE HERE -->
-![Icons Preview](./assets/icons-preview.png)
+<img width="1470" height="828" alt="image" src="https://github.com/user-attachments/assets/7e0657c6-fb4d-48ab-a0c7-0ff0a1078b37" />
+
 
 ---
 
@@ -90,6 +106,8 @@ brew update && brew upgrade modern-ls
 ## 🔒 macOS Security Guidelines
 
 Since `modern-ls` is currently distributed via a custom Homebrew tap rather than the official App Store, macOS Gatekeeper might block it from running the first time with an "unidentified developer" warning.
+<!-- Error Pic --> 
+<img width="1470" height="853" alt="Screenshot 2026-07-01 at 12 07 26 AM" src="https://github.com/user-attachments/assets/9575886a-50d8-45c0-958e-0b493130dc9d" />
 
 **To allow `modern-ls` to run:**
 1. Open **System Settings** on your Mac.
@@ -98,7 +116,7 @@ Since `modern-ls` is currently distributed via a custom Homebrew tap rather than
 4. You will see a message saying `modern-ls` was blocked. Click **"Allow Anyway"**.
 
 <!-- ADD YOUR PRIVACY & SECURITY IMAGE HERE -->
-![macOS Security Settings](./assets/macos-security.png)
+<img width="1470" height="869" alt="Screenshot 2026-07-01 at 12 07 57 AM" src="https://github.com/user-attachments/assets/5f930cd9-3248-401d-855b-1409434a249f" />
 
 Once allowed, `modern-ls` will run smoothly without any further prompts!
 
