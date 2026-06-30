@@ -59,7 +59,7 @@ func Defaults() Config {
 			Icons:  true,
 			Colors: true,
 			Git:    false,
-			Theme:  "default",
+			Theme:  "catppuccin",
 			Human:  false,
 			Date:   "Stamp",
 		},

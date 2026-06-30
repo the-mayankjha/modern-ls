@@ -13,10 +13,10 @@ func init() { Register(catppuccinTheme) }
 var catppuccinTheme = &Theme{
 	Name: "catppuccin",
 
-	// Directories: Sapphire
-	Dir:       Color{116, 199, 236},
-	DirOpen:   Color{137, 220, 235}, // Sky – slightly lighter when expanded
-	HiddenDir: Color{147, 153, 178}, // Overlay2 – muted
+	// Directories: White as requested
+	Dir:       Color{255, 255, 255},
+	DirOpen:   Color{255, 255, 255},
+	HiddenDir: Color{88, 91, 112}, // Surface2 (dim grey)
 
 	// Files: Text / Subtext
 	File:       Color{205, 214, 244}, // Text
