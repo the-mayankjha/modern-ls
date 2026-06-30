@@ -73,8 +73,8 @@
     },
     ".env": {
       "name": ".env",
-      "glyph": "",
-      "color": "#FAF743"
+      "glyph": "🔑",
+      "color": "#888888"
     },
     ".eslintignore": {
       "name": ".eslintignore",
@@ -518,13 +518,13 @@
     },
     "go.mod": {
       "name": "go.mod",
-      "glyph": "",
-      "color": "#00ADD8"
+      "glyph": "📦",
+      "color": "#519ABA"
     },
     "go.sum": {
       "name": "go.sum",
-      "glyph": "",
-      "color": "#00ADD8"
+      "glyph": "📦",
+      "color": "#519ABA"
     },
     "go.work": {
       "name": "go.work",
@@ -768,13 +768,13 @@
     },
     "package-lock.json": {
       "name": "package-lock.json",
-      "glyph": "",
-      "color": "#7A0D21"
+      "glyph": "📦",
+      "color": "#CB3837"
     },
     "package.json": {
       "name": "package.json",
-      "glyph": "",
-      "color": "#E8274B"
+      "glyph": "📦",
+      "color": "#CB3837"
     },
     "platformio.ini": {
       "name": "platformio.ini",
@@ -1100,7 +1100,7 @@
     },
     "7z": {
       "name": "7z",
-      "glyph": "",
+      "glyph": "📦",
       "color": "#ECA517"
     },
     "Dockerfile": {
@@ -1120,7 +1120,7 @@
     },
     "aac": {
       "name": "aac",
-      "glyph": "",
+      "glyph": "🎵",
       "color": "#00AFFF"
     },
     "ada": {
@@ -1205,7 +1205,7 @@
     },
     "avi": {
       "name": "avi",
-      "glyph": "",
+      "glyph": "🎥",
       "color": "#FD971F"
     },
     "avif": {
@@ -1260,7 +1260,7 @@
     },
     "bin": {
       "name": "bin",
-      "glyph": "",
+      "glyph": "💾",
       "color": "#9F0500"
     },
     "blade.php": {
@@ -1280,7 +1280,7 @@
     },
     "bmp": {
       "name": "bmp",
-      "glyph": "",
+      "glyph": "🖼️",
       "color": "#A074C4"
     },
     "bqn": {
@@ -1300,7 +1300,7 @@
     },
     "bz2": {
       "name": "bz2",
-      "glyph": "",
+      "glyph": "📦",
       "color": "#ECA517"
     },
     "bz3": {
@@ -1795,8 +1795,8 @@
     },
     "flac": {
       "name": "flac",
-      "glyph": "",
-      "color": "#0075AA"
+      "glyph": "🎵",
+      "color": "#00AFFF"
     },
     "flc": {
       "name": "flc",
@@ -1880,7 +1880,7 @@
     },
     "gif": {
       "name": "gif",
-      "glyph": "",
+      "glyph": "🖼️",
       "color": "#A074C4"
     },
     "git": {
@@ -1950,7 +1950,7 @@
     },
     "gz": {
       "name": "gz",
-      "glyph": "",
+      "glyph": "📦",
       "color": "#ECA517"
     },
     "h": {
@@ -2045,8 +2045,8 @@
     },
     "ico": {
       "name": "ico",
-      "glyph": "",
-      "color": "#CBCB41"
+      "glyph": "🖼️",
+      "color": "#A074C4"
     },
     "ics": {
       "name": "ics",
@@ -2140,12 +2140,12 @@
     },
     "jpeg": {
       "name": "jpeg",
-      "glyph": "",
+      "glyph": "🖼️",
       "color": "#A074C4"
     },
     "jpg": {
       "name": "jpg",
-      "glyph": "",
+      "glyph": "🖼️",
       "color": "#A074C4"
     },
     "js": {
@@ -2375,7 +2375,7 @@
     },
     "m4a": {
       "name": "m4a",
-      "glyph": "",
+      "glyph": "🎵",
       "color": "#00AFFF"
     },
     "m4v": {
@@ -2435,7 +2435,7 @@
     },
     "mkv": {
       "name": "mkv",
-      "glyph": "",
+      "glyph": "🎥",
       "color": "#FD971F"
     },
     "ml": {
@@ -2470,17 +2470,17 @@
     },
     "mov": {
       "name": "mov",
-      "glyph": "",
+      "glyph": "🎥",
       "color": "#FD971F"
     },
     "mp3": {
       "name": "mp3",
-      "glyph": "",
+      "glyph": "🎵",
       "color": "#00AFFF"
     },
     "mp4": {
       "name": "mp4",
-      "glyph": "",
+      "glyph": "🎥",
       "color": "#FD971F"
     },
     "mpp": {
@@ -2580,8 +2580,8 @@
     },
     "ogg": {
       "name": "ogg",
-      "glyph": "",
-      "color": "#0075AA"
+      "glyph": "🎵",
+      "color": "#00AFFF"
     },
     "ogv": {
       "name": "ogv",
@@ -2665,7 +2665,7 @@
     },
     "png": {
       "name": "png",
-      "glyph": "",
+      "glyph": "🖼️",
       "color": "#A074C4"
     },
     "po": {
@@ -3150,8 +3150,8 @@
     },
     "svg": {
       "name": "svg",
-      "glyph": "󰜡",
-      "color": "#FFB13B"
+      "glyph": "🖼️",
+      "color": "#A074C4"
     },
     "svgz": {
       "name": "svgz",
@@ -3300,7 +3300,7 @@
     },
     "txt": {
       "name": "txt",
-      "glyph": "󰈙",
+      "glyph": "🗒",
       "color": "#89E051"
     },
     "txz": {
@@ -3390,12 +3390,12 @@
     },
     "wav": {
       "name": "wav",
-      "glyph": "",
+      "glyph": "🎵",
       "color": "#00AFFF"
     },
     "webm": {
       "name": "webm",
-      "glyph": "",
+      "glyph": "🎥",
       "color": "#FD971F"
     },
     "webmanifest": {
@@ -3405,7 +3405,7 @@
     },
     "webp": {
       "name": "webp",
-      "glyph": "",
+      "glyph": "🖼️",
       "color": "#A074C4"
     },
     "webpack": {
@@ -3420,7 +3420,7 @@
     },
     "wmv": {
       "name": "wmv",
-      "glyph": "",
+      "glyph": "🎥",
       "color": "#FD971F"
     },
     "woff": {
