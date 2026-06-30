@@ -26,18 +26,18 @@ builds:
       - -s -w -X github.com/the-mayankjha/modern-ls/internal/cli.Version={{.Version}}
 
 archives:
-  - format: tar.gz
+  - formats: [tar.gz]
     name_template: >-
       {{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}
     format_overrides:
       - goos: windows
-        format: zip
+        formats: [zip]
 
 checksum:
   name_template: 'checksums.txt'
 
 snapshot:
-  name_template: "{{ incpatch .Version }}-next"
+  version_template: "{{ incpatch .Version }}-next"
 
 changelog:
   sort: asc
@@ -57,7 +57,7 @@ nfpms:
       - rpm
       - archlinux
 
-brews:
+homebrew_casks:
   - repository:
       owner: the-mayankjha
       name: homebrew-tap
