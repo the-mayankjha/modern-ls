@@ -20,6 +20,9 @@ type Options struct {
 	ShowOwner bool
 	ShowGroup bool
 	ShowMode  bool
+	// Tree specific
+	Tree  bool
+	Depth int
 }
 
 // Renderer is the interface for all output formatters.

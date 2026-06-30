@@ -61,6 +61,8 @@ func Run(args []string, stdout io.Writer) exitCode {
 	ft := fs.BoolP("sort-time", "t", false, "sort by modification time, newest first")
 	fr := fs.BoolP("reverse", "r", false, "reverse order while sorting")
 	fR := fs.BoolP("recursive", "R", false, "list subdirectories recursively")
+	fTree := fs.Bool("tree", false, "recurse into directories as a tree")
+	fDepth := fs.Int("depth", 0, "limit the depth of the tree (0 means unlimited)")
 
 	// ── Time ───────────────────────────────────────────────────────────────────
 	fT := fs.StringP("time-style", "T", "Stamp", "time/date format: Stamp|StampMilli|Kitchen|ANSIC|UnixDate|RubyDate|RFC1123|RFC1123Z|RFC3339|RFC822|RFC822Z|RFC850")
@@ -166,6 +168,9 @@ func Run(args []string, stdout io.Writer) exitCode {
 		DirSelf:    *fd,
 	}
 
+	renderOpts.Tree = *fTree
+	renderOpts.Depth = *fDepth
+
 	// ── Collect paths from arguments ─────────────────────────────────────────
 	paths := fs.Args()
 	if len(paths) == 0 {
@@ -222,7 +227,17 @@ func Run(args []string, stdout io.Writer) exitCode {
 	}
 
 	// ── Render directories ───────────────────────────────────────────────────
-	if *fR {
+	if *fTree {
+		// Tree mode
+		for i, d := range dirs {
+			if i > 0 {
+				fmt.Fprintln(stdout)
+			}
+			openDirIcon := dirOpenIcon(useIcons, useColors, theme)
+			fmt.Fprintf(stdout, "%s%s\n", openDirIcon, d.Name())
+			runTree(stdout, d, 1, *fDepth, "", fsOpts, renderOpts, sortStrategy, iconFn, useIcons, useColors, theme)
+		}
+	} else if *fR {
 		// Recursive mode
 		for i, d := range dirs {
 			if i > 0 {
@@ -424,3 +439,51 @@ func printHelp(w io.Writer, fs *pflag.FlagSet) {
 
 // Ensure runtime.GOOS doesn't create unused import warnings on Windows.
 var _ = runtime.GOOS
+
+func runTree(w io.Writer, d *os.File, currentDepth, maxDepth int, prefix string, fsOpts filesystem.Options, renderOpts renderer.Options, sortStrat sorting.Strategy, iconFn func(string, string, filesystem.Indicator) (string, string), useIcons, useColors bool, theme *themes.Theme) {
+	if maxDepth > 0 && currentDepth > maxDepth {
+		return
+	}
+
+	var gitStatus map[string]string
+	if fsOpts.Git {
+		gs, _ := git.ForDir(d.Name())
+		gitStatus = gitStatusToStrings(gs)
+	}
+
+	entries, _, err := filesystem.ReadDir(d, gitStatus, fsOpts, iconFn)
+	dirName := d.Name()
+	d.Close()
+	if err != nil {
+		log.Printf("modern-ls: partial access to %q: %v", dirName, err)
+	}
+
+	sortEntries(entries, sortStrat)
+
+	for i, e := range entries {
+		isLast := i == len(entries)-1
+
+		t := &renderer.Tree{
+			Prefix:     prefix,
+			IsLast:     isLast,
+			TimeFormat: renderOpts.TimeFormat,
+		}
+		t.RenderEntry(w, e, renderOpts)
+
+		if e.Indicator == filesystem.IndicatorDir {
+			fullSub := filepath.Join(dirName, e.Name+e.Ext)
+			subD, err := os.Open(fullSub)
+			if err != nil {
+				log.Printf("modern-ls: cannot access %q: %v", fullSub, err)
+				continue
+			}
+			newPrefix := prefix
+			if isLast {
+				newPrefix += "    "
+			} else {
+				newPrefix += "│   "
+			}
+			runTree(w, subD, currentDepth+1, maxDepth, newPrefix, fsOpts, renderOpts, sortStrat, iconFn, useIcons, useColors, theme)
+		}
+	}
+}
