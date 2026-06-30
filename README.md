@@ -1,129 +1,119 @@
+<h1 align="center">modern-ls 🚀</h1>
+
 <p align="center">
-  <img alt="GoReleaser Logo" src="https://avatars2.githubusercontent.com/u/24697112?v=3&s=200" height="140" />
-  <h3 align="center">GoReleaser</h3>
-  <p align="center">Deliver Go binaries as fast and easily as possible.</p>
+  <b>A beautiful, extremely fast, modern replacement for Unix <code>ls</code> written in Go.</b>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/github/license/the-mayankjha/modern-ls?style=for-the-badge&color=blue" alt="License">
+  <img src="https://img.shields.io/github/v/release/the-mayankjha/modern-ls?style=for-the-badge&color=green" alt="Release">
+  <img src="https://img.shields.io/github/go-mod/go-version/the-mayankjha/modern-ls?style=for-the-badge&color=cyan" alt="Go Version">
 </p>
 
 ---
 
-GoReleaser builds Go binaries for several platforms, creates a GitHub release and then
-pushes a Homebrew formula to a tap repository. All that wrapped in your favorite CI.
+`modern-ls` is a cross-platform (Windows, macOS, Linux) CLI utility that brings the classic `ls` command into the 21st century. It features native Git integration, highly customizable Nerd Font icons, vibrant color themes, and an incredibly fast recursive tree-view mode.
 
-![](https://raw.githubusercontent.com/goreleaser/example-simple/main/goreleaser.gif)
+## ✨ Features
 
----
+- 🎨 **Beautiful Color Themes:** Built-in support for popular themes like `catppuccin`, `tokyonight`, `gruvbox`, `dracula`, `nord`, and `rose-pine`.
+- 🏷️ **Nerd Font Icons:** Extensive file-type recognition with beautiful glyphs (including custom mappings for `.dmg`, `.exe`, `.zip`, `.tar`, `.rar`, and hundreds more).
+- 🌲 **Tree View Engine:** Traverse your directories natively with the `--tree` flag, and control traversal using the `--depth` flag!
+- 🐙 **Git Integration:** See tracked, untracked, modified, and deleted Git file statuses natively in the long-listing outputs (`-l`).
+- ⚡ **Blazing Fast:** Written in Go with minimal dependencies, compiling into a tiny, zero-dependency static binary.
+- 🔄 **Safe Upgrades:** Integrated `--upgrade` command pointing directly to your native package managers.
 
-## Get GoReleaser
+## 📦 Installation
 
-- [On your machine](https://goreleaser.com/install/);
-- [On CI/CD systems](https://goreleaser.com/ci/).
+`modern-ls` is packaged for all major operating systems. You can install it using your preferred package manager:
 
-## Documentation
+### macOS / Linux (Homebrew)
+```bash
+brew tap the-mayankjha/homebrew-tap
+brew install modern-ls
+```
 
-Documentation is hosted live at https://goreleaser.com
+### Windows (Scoop)
+```powershell
+scoop bucket add mayankjha https://github.com/the-mayankjha/scoop-bucket.git
+scoop install modern-ls
+```
 
-## Community
+### Windows (Winget)
+```powershell
+winget install the-mayankjha.modern-ls
+```
 
-You have questions, need support and or just want to talk about GoReleaser?
+### Debian / Ubuntu (APT)
+Download the `.deb` release from the [Releases page](https://github.com/the-mayankjha/modern-ls/releases) and run:
+```bash
+sudo apt install ./modern-ls_*_linux_amd64.deb
+```
 
-Here are ways to get in touch with the GoReleaser community:
+### Fedora / RHEL (DNF)
+Download the `.rpm` release from the [Releases page](https://github.com/the-mayankjha/modern-ls/releases) and run:
+```bash
+sudo dnf install ./modern-ls_*_linux_amd64.rpm
+```
 
-[![Join Discord](https://img.shields.io/badge/Join_our_Discord_server-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/RGEBtg8vQ6)
-[![Follow Twitter](https://img.shields.io/badge/follow_on_twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/goreleaser)
-[![GitHub Discussions](https://img.shields.io/badge/GITHUB_DISCUSSION-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/goreleaser/goreleaser/discussions)
+### Arch Linux (Pacman)
+Download the `.pkg.tar.zst` release from the [Releases page](https://github.com/the-mayankjha/modern-ls/releases) and run:
+```bash
+sudo pacman -U ./modern-ls_*_linux_amd64.pkg.tar.zst
+```
 
-You can find the links above and all others [here](https://goreleaser.com/links/).
+## 🚀 Usage
 
-### Code of Conduct
+`modern-ls` acts as a drop-in replacement for standard `ls`, accepting many of the same standard POSIX flags.
 
-This project adheres to the Contributor Covenant [code of conduct](https://github.com/goreleaser/.github/blob/main/CODE_OF_CONDUCT.md).
-By participating, you are expected to uphold this code.
-We appreciate your contribution.
-Please refer to our [contributing guidelines](CONTRIBUTING.md) for further information.
+```bash
+# Standard listing
+modern-ls
 
-## Badges
+# Long listing with git status, human readable sizes, and all hidden files
+modern-ls -laD
 
-[![Release](https://img.shields.io/github/release/goreleaser/goreleaser.svg?style=for-the-badge)](https://github.com/goreleaser/goreleaser/releases/latest)
-[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=for-the-badge)](/LICENSE.md)
-[![Build status](https://img.shields.io/github/actions/workflow/status/goreleaser/goreleaser/build.yml?style=for-the-badge&branch=main)](https://github.com/goreleaser/goreleaser/actions?workflow=build)
-[![Codecov branch](https://img.shields.io/codecov/c/github/goreleaser/goreleaser/main.svg?style=for-the-badge)](https://codecov.io/gh/goreleaser/goreleaser)
-[![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/goreleaser&style=for-the-badge)](https://artifacthub.io/packages/search?repo=goreleaser)
-[![Go Doc](https://img.shields.io/badge/godoc-reference-blue.svg?style=for-the-badge)](http://godoc.org/github.com/goreleaser/goreleaser)
-[![Powered By: GoReleaser](https://img.shields.io/badge/powered%20by-goreleaser-green.svg?style=for-the-badge)](https://github.com/goreleaser)
-[![Backers on Open Collective](https://opencollective.com/goreleaser/backers/badge.svg?style=for-the-badge)](https://opencollective.com/goreleaser/backers/)
-[![Sponsors on Open Collective](https://opencollective.com/goreleaser/sponsors/badge.svg?style=for-the-badge)](https://opencollective.com/goreleaser/sponsors/)
-[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg?style=for-the-badge)](https://conventionalcommits.org)
-[![CII Best Practices](https://img.shields.io/cii/summary/5420?label=openssf%20best%20practices&style=for-the-badge)](https://bestpractices.coreinfrastructure.org/projects/5420)
+# Display as a tree (limit depth to 2)
+modern-ls --tree --depth=2
 
-## GitHub Sponsors
+# Change the color theme to tokyonight
+modern-ls --theme=tokyonight
 
-High-tier sponsors of [@caarlos0](https://github.com/sponsors/caarlos0/) on GitHub:
+# Get author and version info
+modern-ls --info
+```
 
-<a href="https://smallstep.com" target="_blank"><img width="200" src="https://github.com/goreleaser/goreleaser/assets/245435/05ade839-6652-474a-af90-da3ea67dde24"></a>
+### Supported Flags
+- `-l`, `--long`: Use long listing format
+- `-a`, `--all`: Include hidden files (starting with `.`)
+- `-A`, `--almost-all`: Do not list implied `.` and `..`
+- `-D`, `--git-status`: Print Git status of files
+- `-c`, `--disable-color`: Turn off colors
+- `--disable-icon`: Turn off file icons
+- `--theme <name>`: Switch the color theme (`default`, `catppuccin`, `tokyonight`, `gruvbox`, `dracula`, `nord`, `rose-pine`)
+- `--tree`: Recurse into directories as a tree
+- `--depth <N>`: Limit the depth of the tree (0 means unlimited)
+- `-v`, `--version`: Print version information
+- `-i`, `--info`: Print author and project details
+- `--upgrade`: View package-manager upgrade instructions
 
-## OpenCollective
+## 🤝 Contributing
 
-### Sponsors
+Contributions are always welcome! Feel free to open issues or submit Pull Requests.
 
-Does your company use goreleaser? Help keep the project bug-free and feature rich by [sponsoring the project](https://opencollective.com/goreleaser#sponsor).
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-<a href="https://opencollective.com/goreleaser/sponsors/0/website" target="_blank"><img src="https://opencollective.com/goreleaser/sponsors/0/avatar"></a>
-<a href="https://opencollective.com/goreleaser/sponsors/1/website" target="_blank"><img src="https://opencollective.com/goreleaser/sponsors/1/avatar"></a>
-<a href="https://opencollective.com/goreleaser/sponsors/2/website" target="_blank"><img src="https://opencollective.com/goreleaser/sponsors/2/avatar"></a>
-<a href="https://opencollective.com/goreleaser/sponsors/3/website" target="_blank"><img src="https://opencollective.com/goreleaser/sponsors/3/avatar"></a>
-<a href="https://opencollective.com/goreleaser/sponsors/4/website" target="_blank"><img src="https://opencollective.com/goreleaser/sponsors/4/avatar"></a>
-<a href="https://opencollective.com/goreleaser/sponsors/5/website" target="_blank"><img src="https://opencollective.com/goreleaser/sponsors/5/avatar"></a>
-<a href="https://opencollective.com/goreleaser/sponsors/6/website" target="_blank"><img src="https://opencollective.com/goreleaser/sponsors/6/avatar"></a>
-<a href="https://opencollective.com/goreleaser/sponsors/7/website" target="_blank"><img src="https://opencollective.com/goreleaser/sponsors/7/avatar"></a>
-<a href="https://opencollective.com/goreleaser/sponsors/8/website" target="_blank"><img src="https://opencollective.com/goreleaser/sponsors/8/avatar"></a>
-<a href="https://opencollective.com/goreleaser/sponsors/9/website" target="_blank"><img src="https://opencollective.com/goreleaser/sponsors/9/avatar"></a>
-<a href="https://opencollective.com/goreleaser/sponsors/10/website" target="_blank"><img src="https://opencollective.com/goreleaser/sponsors/10/avatar"></a>
-<a href="https://opencollective.com/goreleaser/sponsors/11/website" target="_blank"><img src="https://opencollective.com/goreleaser/sponsors/11/avatar"></a>
-<a href="https://opencollective.com/goreleaser/sponsors/12/website" target="_blank"><img src="https://opencollective.com/goreleaser/sponsors/12/avatar"></a>
-<a href="https://opencollective.com/goreleaser/sponsors/13/website" target="_blank"><img src="https://opencollective.com/goreleaser/sponsors/13/avatar"></a>
-<a href="https://opencollective.com/goreleaser/sponsors/14/website" target="_blank"><img src="https://opencollective.com/goreleaser/sponsors/14/avatar"></a>
-<a href="https://opencollective.com/goreleaser/sponsors/15/website" target="_blank"><img src="https://opencollective.com/goreleaser/sponsors/15/avatar"></a>
-<a href="https://opencollective.com/goreleaser/sponsors/16/website" target="_blank"><img src="https://opencollective.com/goreleaser/sponsors/16/avatar"></a>
+## 👨‍💻 Author
 
-### Backers
+**Mayank Kumar Jha**
+- Portfolio: [https://mayankjha.nfks.co.in/](https://mayankjha.nfks.co.in/)
+- GitHub: [@the-mayankjha](https://github.com/the-mayankjha)
+- LinkedIn: [the-mayankjha](https://linkedin.com/in/the-mayankjha)
 
-Love our work and community? [Become a backer](https://opencollective.com/goreleaser).
+## 📄 License
 
-<a href="https://opencollective.com/goreleaser/backers/0/website" target="_blank"><img src="https://opencollective.com/goreleaser/backers/0/avatar"></a>
-<a href="https://opencollective.com/goreleaser/backers/1/website" target="_blank"><img src="https://opencollective.com/goreleaser/backers/1/avatar"></a>
-<a href="https://opencollective.com/goreleaser/backers/2/website" target="_blank"><img src="https://opencollective.com/goreleaser/backers/2/avatar"></a>
-<a href="https://opencollective.com/goreleaser/backers/3/website" target="_blank"><img src="https://opencollective.com/goreleaser/backers/3/avatar"></a>
-<a href="https://opencollective.com/goreleaser/backers/4/website" target="_blank"><img src="https://opencollective.com/goreleaser/backers/4/avatar"></a>
-<a href="https://opencollective.com/goreleaser/backers/5/website" target="_blank"><img src="https://opencollective.com/goreleaser/backers/5/avatar"></a>
-<a href="https://opencollective.com/goreleaser/backers/6/website" target="_blank"><img src="https://opencollective.com/goreleaser/backers/6/avatar"></a>
-<a href="https://opencollective.com/goreleaser/backers/7/website" target="_blank"><img src="https://opencollective.com/goreleaser/backers/7/avatar"></a>
-<a href="https://opencollective.com/goreleaser/backers/8/website" target="_blank"><img src="https://opencollective.com/goreleaser/backers/8/avatar"></a>
-<a href="https://opencollective.com/goreleaser/backers/9/website" target="_blank"><img src="https://opencollective.com/goreleaser/backers/9/avatar"></a>
-<a href="https://opencollective.com/goreleaser/backers/10/website" target="_blank"><img src="https://opencollective.com/goreleaser/backers/10/avatar"></a>
-<a href="https://opencollective.com/goreleaser/backers/11/website" target="_blank"><img src="https://opencollective.com/goreleaser/backers/11/avatar"></a>
-<a href="https://opencollective.com/goreleaser/backers/12/website" target="_blank"><img src="https://opencollective.com/goreleaser/backers/12/avatar"></a>
-<a href="https://opencollective.com/goreleaser/backers/13/website" target="_blank"><img src="https://opencollective.com/goreleaser/backers/13/avatar"></a>
-<a href="https://opencollective.com/goreleaser/backers/14/website" target="_blank"><img src="https://opencollective.com/goreleaser/backers/14/avatar"></a>
-<a href="https://opencollective.com/goreleaser/backers/15/website" target="_blank"><img src="https://opencollective.com/goreleaser/backers/15/avatar"></a>
-<a href="https://opencollective.com/goreleaser/backers/16/website" target="_blank"><img src="https://opencollective.com/goreleaser/backers/16/avatar"></a>
-<a href="https://opencollective.com/goreleaser/backers/17/website" target="_blank"><img src="https://opencollective.com/goreleaser/backers/17/avatar"></a>
-<a href="https://opencollective.com/goreleaser/backers/18/website" target="_blank"><img src="https://opencollective.com/goreleaser/backers/18/avatar"></a>
-<a href="https://opencollective.com/goreleaser/backers/19/website" target="_blank"><img src="https://opencollective.com/goreleaser/backers/19/avatar"></a>
-<a href="https://opencollective.com/goreleaser/backers/20/website" target="_blank"><img src="https://opencollective.com/goreleaser/backers/20/avatar"></a>
-<a href="https://opencollective.com/goreleaser/backers/21/website" target="_blank"><img src="https://opencollective.com/goreleaser/backers/21/avatar"></a>
-<a href="https://opencollective.com/goreleaser/backers/22/website" target="_blank"><img src="https://opencollective.com/goreleaser/backers/22/avatar"></a>
-<a href="https://opencollective.com/goreleaser/backers/23/website" target="_blank"><img src="https://opencollective.com/goreleaser/backers/23/avatar"></a>
-<a href="https://opencollective.com/goreleaser/backers/24/website" target="_blank"><img src="https://opencollective.com/goreleaser/backers/24/avatar"></a>
-<a href="https://opencollective.com/goreleaser/backers/25/website" target="_blank"><img src="https://opencollective.com/goreleaser/backers/25/avatar"></a>
-<a href="https://opencollective.com/goreleaser/backers/26/website" target="_blank"><img src="https://opencollective.com/goreleaser/backers/26/avatar"></a>
-<a href="https://opencollective.com/goreleaser/backers/27/website" target="_blank"><img src="https://opencollective.com/goreleaser/backers/27/avatar"></a>
-<a href="https://opencollective.com/goreleaser/backers/28/website" target="_blank"><img src="https://opencollective.com/goreleaser/backers/28/avatar"></a>
-<a href="https://opencollective.com/goreleaser/backers/29/website" target="_blank"><img src="https://opencollective.com/goreleaser/backers/29/avatar"></a>
-
-### Contributors
-
-This project exists thanks to all the people who contribute. [[Contribute](CONTRIBUTING.md)].
-<a href="https://github.com/goreleaser/goreleaser/graphs/contributors"><img src="https://opencollective.com/goreleaser/contributors.svg?width=890" /></a>
-
-## Stargazers over time
-[![Stargazers over time](https://starchart.cc/goreleaser/goreleaser.svg?variant=adaptive)](https://starchart.cc/goreleaser/goreleaser)
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
