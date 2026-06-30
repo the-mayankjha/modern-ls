@@ -45,6 +45,14 @@ func main() {
 	if err != nil {
 		log.Fatalf("parse icons_by_file_extension.lua: %v", err)
 	}
+
+	// Add/override custom icons for specific file types
+	byExtension["dmg"] = parser.Icon{Name: "dmg", Glyph: "💿", Color: "#E5E5E5"}
+	byExtension["exe"] = parser.Icon{Name: "exe", Glyph: "🪟", Color: "#0078D7"}
+	byExtension["tar"] = parser.Icon{Name: "tar", Glyph: "📦", Color: "#ECA517"}
+	byExtension["zip"] = parser.Icon{Name: "zip", Glyph: "📦", Color: "#ECA517"}
+	byExtension["rar"] = parser.Icon{Name: "rar", Glyph: "📦", Color: "#ECA517"}
+
 	log.Printf("parsed %d extension entries", len(byExtension))
 
 	// ── 2. Build defaults and folders ──────────────────────────────────────

@@ -23,7 +23,7 @@ builds:
       - goos: windows
         goarch: arm64
     ldflags:
-      - -s -w -X github.com/the-mayankjha/modern-ls/internal/cli.Version={{.Version}}
+      - -s -w -X github.com/the-mayankjha/modern-ls/internal/cli.Version={{.Version}} -X github.com/the-mayankjha/modern-ls/internal/cli.Commit={{.Commit}} -X github.com/the-mayankjha/modern-ls/internal/cli.Date={{.Date}} -X github.com/the-mayankjha/modern-ls/internal/cli.BuiltBy=goreleaser
 
 archives:
   - formats: [tar.gz]

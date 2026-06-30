@@ -14,3 +14,12 @@ modern-ls
 
 # macOS
 .DS_Store
+
+# Build artifacts
+dist/
+bin/
+goreleaser
+testicons/
+completions/
+manpages/
+schema.json

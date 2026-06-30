@@ -21,8 +21,13 @@ import (
 	"github.com/the-mayankjha/modern-ls/internal/themes"
 )
 
-// Version is injected at build time via -ldflags.
-var Version = "dev"
+// Build information injected at compile time via -ldflags.
+var (
+	Version = "dev"
+	Commit  = "none"
+	Date    = "unknown"
+	BuiltBy = "unknown"
+)
 
 // exitCode tracks the process exit code during a run.
 type exitCode int
@@ -57,7 +62,7 @@ func Run(args []string, stdout io.Writer) exitCode {
 	fS := fs.BoolP("sort-size", "S", false, "sort by file size, largest first")
 	fU := fs.BoolP("no-sort", "U", false, "do not sort; list entries in directory order")
 	fX := fs.BoolP("sort-ext", "X", false, "sort alphabetically by entry extension")
-	fv := fs.BoolP("version-sort", "v", false, "natural sort of (version) numbers within text")
+	fv := fs.Bool("version-sort", false, "natural sort of (version) numbers within text")
 	ft := fs.BoolP("sort-time", "t", false, "sort by modification time, newest first")
 	fr := fs.BoolP("reverse", "r", false, "reverse order while sorting")
 	fR := fs.BoolP("recursive", "R", false, "list subdirectories recursively")
@@ -70,12 +75,14 @@ func Run(args []string, stdout io.Writer) exitCode {
 	// ── modern-ls specific ─────────────────────────────────────────────────────
 	fD := fs.BoolP("git-status", "D", false, "print git status of files")
 	fc := fs.BoolP("disable-color", "c", false, "don't color icons, filenames and git status")
-	fi := fs.BoolP("disable-icon", "i", false, "don't print icons of the files")
+	fi := fs.Bool("disable-icon", false, "don't print icons of the files")
 	fTheme := fs.String("theme", "", "color theme: default|catppuccin|tokyonight|gruvbox|dracula|nord|rose-pine")
 	fConfig := fs.String("config", "", "path to config file")
 
 	// ── Meta flags ─────────────────────────────────────────────────────────────
-	fVersion := fs.BoolP("version", "V", false, "output version information and exit")
+	fVersion := fs.BoolP("version", "v", false, "output version information and exit")
+	fUpgrade := fs.Bool("upgrade", false, "display upgrade instructions and exit")
+	fInfo := fs.BoolP("info", "i", false, "display author and project information and exit")
 	fHelp := fs.BoolP("help", "?", false, "display this help and exit")
 
 	// Legacy short flags preserved for compatibility
@@ -98,7 +105,35 @@ func Run(args []string, stdout io.Writer) exitCode {
 
 	// ── Version ─────────────────────────────────────────────────────────────
 	if *fVersion {
-		fmt.Fprintf(stdout, "modern-ls %s\nCopyright (c) 2024 Mayank Jha\nLicense MIT <https://opensource.org/licenses/MIT>\nThis is free software: you are free to change and redistribute it.\nThere is NO WARRANTY, to the extent permitted by law.\n\nWritten by Mayank Jha\n", Version)
+		fmt.Fprintf(stdout, "modern-ls %s\n", Version)
+		fmt.Fprintf(stdout, "Commit: %s\nBuild Date: %s\nBuilt By: %s\n\n", Commit, Date, BuiltBy)
+		fmt.Fprintf(stdout, "Copyright (c) 2026 Mayank Kumar Jha\nLicense MIT <https://opensource.org/licenses/MIT>\nThis is free software: you are free to change and redistribute it.\nThere is NO WARRANTY, to the extent permitted by law.\n\nWritten by Mayank Kumar Jha\n")
+		return exitOK
+	}
+
+	// ── Info ────────────────────────────────────────────────────────────────
+	if *fInfo {
+		fmt.Fprintf(stdout, "modern-ls %s\n", Version)
+		fmt.Fprintf(stdout, "Commit: %s\nBuild Date: %s\nBuilt By: %s\n\n", Commit, Date, BuiltBy)
+		fmt.Fprintf(stdout, "A modern, cross-platform replacement for 'ls' written in Go.\n\n")
+		fmt.Fprintf(stdout, "Author:   Mayank Kumar Jha\n")
+		fmt.Fprintf(stdout, "Portfolio: https://mayankjha.nfks.co.in/\n")
+		fmt.Fprintf(stdout, "GitHub:   github.com/the-mayankjha\n")
+		fmt.Fprintf(stdout, "LinkedIn: the-mayankjha\n\n")
+		fmt.Fprintf(stdout, "Copyright (c) 2026 Mayank Kumar Jha\n")
+		return exitOK
+	}
+
+	// ── Upgrade ─────────────────────────────────────────────────────────────
+	if *fUpgrade {
+		fmt.Fprintf(stdout, "To upgrade modern-ls, please use the package manager you originally installed it with:\n\n")
+		fmt.Fprintf(stdout, "  Homebrew:  brew upgrade modern-ls\n")
+		fmt.Fprintf(stdout, "  Scoop:     scoop update modern-ls\n")
+		fmt.Fprintf(stdout, "  APT:       sudo apt update && sudo apt install --only-upgrade modern-ls\n")
+		fmt.Fprintf(stdout, "  DNF:       sudo dnf upgrade modern-ls\n")
+		fmt.Fprintf(stdout, "  Pacman:    sudo pacman -Syu modern-ls\n")
+		fmt.Fprintf(stdout, "  Winget:    winget upgrade the-mayankjha.modern-ls\n\n")
+		fmt.Fprintf(stdout, "Or download the latest binary from: https://github.com/the-mayankjha/modern-ls/releases\n")
 		return exitOK
 	}
 

@@ -1563,6 +1563,11 @@
       "glyph": "",
       "color": "#4D2C0B"
     },
+    "dmg": {
+      "name": "dmg",
+      "glyph": "💿",
+      "color": "#E5E5E5"
+    },
     "doc": {
       "name": "doc",
       "glyph": "󰈬",
@@ -1700,8 +1705,8 @@
     },
     "exe": {
       "name": "exe",
-      "glyph": "",
-      "color": "#9F0500"
+      "glyph": "🪟",
+      "color": "#0078D7"
     },
     "exs": {
       "name": "exs",
@@ -2815,7 +2820,7 @@
     },
     "rar": {
       "name": "rar",
-      "glyph": "",
+      "glyph": "📦",
       "color": "#ECA517"
     },
     "rasi": {
@@ -3173,6 +3178,11 @@
       "glyph": "",
       "color": "#519ABA"
     },
+    "tar": {
+      "name": "tar",
+      "glyph": "📦",
+      "color": "#ECA517"
+    },
     "tbc": {
       "name": "tbc",
       "glyph": "󰛓",
@@ -3525,7 +3535,7 @@
     },
     "zip": {
       "name": "zip",
-      "glyph": "",
+      "glyph": "📦",
       "color": "#ECA517"
     },
     "zsh": {
