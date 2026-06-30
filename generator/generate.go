@@ -1,4 +1,3 @@
-
 // Command generator parses vendored nvim-web-devicons Lua tables, writes
 // assets/icons.json, and then generates internal/icons/icons_generated.go so
 // that the runtime never needs to do I/O to look up an icon.
@@ -138,37 +137,37 @@ func buildDefaults() map[string]parser.Icon {
 		// Generic regular file
 		"file": {
 			Name:  "file",
-			Glyph: "\uf016",   // nf-fa-file (U+F016)
+			Glyph: "\uf016", // nf-fa-file (U+F016)
 			Color: "#C5C8C6",
 		},
 		// Generic directory (closed)
 		"dir": {
 			Name:  "dir",
-			Glyph: "\uf07b",   // nf-fa-folder (U+F07B)
+			Glyph: "\uf07b", // nf-fa-folder (U+F07B)
 			Color: "#81A2BE",
 		},
 		// Generic directory (open / expanded)
 		"diropen": {
 			Name:  "diropen",
-			Glyph: "\uf07c",   // nf-fa-folder_open (U+F07C)
+			Glyph: "\uf07c", // nf-fa-folder_open (U+F07C)
 			Color: "#81A2BE",
 		},
 		// Dot-file (hidden regular file)
 		"hiddenfile": {
 			Name:  "hiddenfile",
-			Glyph: "\uf016",   // nf-fa-file (U+F016)
+			Glyph: "\uf016", // nf-fa-file (U+F016)
 			Color: "#8C9440",
 		},
 		// Hidden directory
 		"hiddendir": {
 			Name:  "hiddendir",
-			Glyph: "\uf07b",   // nf-fa-folder (U+F07B)
+			Glyph: "\uf07b", // nf-fa-folder (U+F07B)
 			Color: "#5F819D",
 		},
 		// Executable file
 		"exe": {
 			Name:  "exe",
-			Glyph: "\uf013",   // nf-fa-cog (U+F013)
+			Glyph: "\uf013", // nf-fa-cog (U+F013)
 			Color: "#B5BD68",
 		},
 		".config": {Name: ".config", Glyph: "\uf013", Color: "#c5c8c6"},

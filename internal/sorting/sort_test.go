@@ -13,9 +13,9 @@ type testEntry struct {
 	modTime time.Time
 }
 
-func (e testEntry) GetName() string      { return e.name }
-func (e testEntry) GetExt() string       { return e.ext }
-func (e testEntry) GetSize() int64       { return e.size }
+func (e testEntry) GetName() string       { return e.name }
+func (e testEntry) GetExt() string        { return e.ext }
+func (e testEntry) GetSize() int64        { return e.size }
 func (e testEntry) GetModTime() time.Time { return e.modTime }
 
 // makeEntry is a convenience constructor.

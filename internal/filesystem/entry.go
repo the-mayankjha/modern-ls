@@ -13,8 +13,8 @@ import (
 type Indicator string
 
 const (
-	IndicatorDir    Indicator = "/"
-	IndicatorPipe   Indicator = "|"
+	IndicatorDir     Indicator = "/"
+	IndicatorPipe    Indicator = "|"
 	IndicatorSymlink Indicator = "@"
 	IndicatorSocket  Indicator = "="
 	IndicatorExec    Indicator = "*"

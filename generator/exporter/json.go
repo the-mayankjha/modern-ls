@@ -15,16 +15,16 @@ import (
 // All maps are keyed by the lookup string (filename or extension).
 type IconDB struct {
 	// SchemaVersion allows future migrations without breaking old readers.
-	SchemaVersion int                    `json:"schema_version"`
+	SchemaVersion int `json:"schema_version"`
 	// ByFilename maps exact filenames (e.g. "go.mod", "Dockerfile") to icons.
-	ByFilename    map[string]parser.Icon `json:"by_filename"`
+	ByFilename map[string]parser.Icon `json:"by_filename"`
 	// ByExtension maps file extensions without the leading dot (e.g. "go", "ts") to icons.
-	ByExtension   map[string]parser.Icon `json:"by_extension"`
+	ByExtension map[string]parser.Icon `json:"by_extension"`
 	// ByFolder maps specific folder names to icons.
-	ByFolder      map[string]parser.Icon `json:"by_folder"`
+	ByFolder map[string]parser.Icon `json:"by_folder"`
 	// Defaults holds fallback icons for generic kinds: "file", "dir", "diropen",
 	// "hiddenfile", "hiddendir", "exe".
-	Defaults       map[string]parser.Icon `json:"defaults"`
+	Defaults map[string]parser.Icon `json:"defaults"`
 }
 
 // WriteJSON encodes db as indented JSON to w.

@@ -10,7 +10,6 @@ import (
 	"github.com/the-mayankjha/modern-ls/internal/filesystem"
 )
 
-
 // hexToANSI converts a #RRGGBB hex string to an ANSI 24-bit foreground code.
 func hexToANSI(hex string) string {
 	if len(hex) != 7 || hex[0] != '#' {
@@ -50,23 +49,23 @@ func Lookup(name, ext string, ind filesystem.Indicator) (glyph, color string) {
 
 func lookupDir(fullName string) (glyph, color string) {
 	lower := strings.ToLower(fullName)
-	
+
 	// 1. Specific folder match
 	if entry, ok := ByFolder[lower]; ok {
 		return entry.Glyph, hexToANSI(entry.Color)
 	}
-	
+
 	// 2. Exact filename match (rare for folders, but occasionally exists in icon maps)
 	if entry, ok := ByFilename[lower]; ok {
 		return entry.Glyph, hexToANSI(entry.Color)
 	}
-	
+
 	// 3. Hidden directory (starts with dot)
 	if strings.HasPrefix(fullName, ".") {
 		d := Defaults["hiddendir"]
 		return d.Glyph, hexToANSI(d.Color)
 	}
-	
+
 	// 4. Generic directory fallback
 	d := Defaults["dir"]
 	return d.Glyph, hexToANSI(d.Color)

@@ -18,14 +18,14 @@ const brailSep = "\u2800"
 // cell holds pre-computed display data for one entry.
 type cell struct {
 	size      string
+	sizeW     int
 	icon      string
 	iconColor string
 	name      string // name + ext + indicator
+	nameColor string // ANSI color for the name based on entry type
+	nameW     int
 	git       string
-	// visual widths
-	sizeW int
-	nameW int
-	gitW  int
+	gitW      int
 }
 
 // cellWidth returns the total visual column width of a cell + padding.
@@ -181,19 +181,23 @@ func writeCell(w io.Writer, c cell, cw colWidths, showIcon bool, opts Options) {
 	}
 
 	// Name column (padded to max width in this display column)
-	gc := ""
-	gcReset := ""
-	if opts.Colors {
-		gc = gitColorStr(c.git, opts)
-		if gc != "" {
-			gcReset = reset
-		}
+	ncReset := ""
+	if c.nameColor != "" {
+		ncReset = reset
 	}
 	padding := cw[1] - c.nameW
-	fmt.Fprintf(w, "%s%s%s%s", gc, c.name, gcReset, strings.Repeat(" ", padding))
+	fmt.Fprintf(w, "%s%s%s%s", c.nameColor, c.name, ncReset, strings.Repeat(" ", padding))
 
 	// Git column
 	if cw[2] > 0 && c.git != "" {
+		gc := ""
+		gcReset := ""
+		if opts.Colors {
+			gc = gitColorStr(c.git, opts)
+			if gc != "" {
+				gcReset = reset
+			}
+		}
 		fmt.Fprintf(w, "%s%s%s%s", brailSep, gc, c.git, gcReset)
 	}
 }
@@ -222,6 +226,7 @@ func buildCells(entries []*filesystem.Entry, opts Options) []cell {
 			icon:      e.Icon,
 			iconColor: e.IconColor,
 			name:      name,
+			nameColor: entryColorStr(e, opts),
 			git:       e.GitStatus,
 			nameW:     runewidth.StringWidth(name),
 			gitW:      runewidth.StringWidth(e.GitStatus),

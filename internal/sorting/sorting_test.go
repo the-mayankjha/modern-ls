@@ -31,7 +31,7 @@ func BenchmarkSortAlpha(b *testing.B) {
 		// Clone entries to avoid sorting an already sorted slice
 		clone := make([]*filesystem.Entry, len(entries))
 		copy(clone, entries)
-		
+
 		sort.SliceStable(clone, func(i, j int) bool {
 			return Alpha(clone[i], clone[j]) < 0
 		})
@@ -44,7 +44,7 @@ func BenchmarkSortSize(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		clone := make([]*filesystem.Entry, len(entries))
 		copy(clone, entries)
-		
+
 		sort.SliceStable(clone, func(i, j int) bool {
 			return BySize(clone[i], clone[j]) < 0
 		})
@@ -57,7 +57,7 @@ func BenchmarkSortTime(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		clone := make([]*filesystem.Entry, len(entries))
 		copy(clone, entries)
-		
+
 		sort.SliceStable(clone, func(i, j int) bool {
 			return ByTime(clone[i], clone[j]) < 0
 		})

@@ -31,15 +31,23 @@ func (o *OneLine) Render(w io.Writer, entries []*filesystem.Entry, _ int, opts O
 
 		// Name
 		name := e.FullName + string(e.Indicator)
-		gc := gitColorStr(e.GitStatus, opts)
-		gcReset := ""
-		if gc != "" {
-			gcReset = reset
+		nc := entryColorStr(e, opts)
+		ncReset := ""
+		if nc != "" {
+			ncReset = reset
 		}
-		fmt.Fprintf(w, "%s%s%s", gc, name, gcReset)
+		fmt.Fprintf(w, "%s%s%s", nc, name, ncReset)
 
 		// Git
 		if opts.ShowGit && e.GitStatus != "" {
+			gc := ""
+			gcReset := ""
+			if opts.Colors {
+				gc = gitColorStr(e.GitStatus, opts)
+				if gc != "" {
+					gcReset = reset
+				}
+			}
 			fmt.Fprintf(w, " %s%s%s", gc, e.GitStatus, gcReset)
 		}
 

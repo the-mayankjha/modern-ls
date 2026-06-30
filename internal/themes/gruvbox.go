@@ -24,19 +24,19 @@ var gruvboxTheme = &Theme{
 	HiddenFile: Color{168, 153, 132}, // gray
 
 	// Special types
-	Executable: Color{184, 187, 38}, // green_bright
+	Executable: Color{184, 187, 38},  // green_bright
 	Symlink:    Color{131, 165, 152}, // blue_bright
 	Pipe:       Color{254, 128, 25},  // orange_bright
 	Socket:     Color{211, 134, 155}, // purple_bright
 	Special:    Color{142, 192, 124}, // aqua_bright
 
 	// Git
-	GitUntracked: Color{152, 151, 26}, // green
-	GitModified:  Color{215, 153, 33}, // yellow
-	GitAdded:     Color{184, 187, 38}, // green_bright
-	GitDeleted:   Color{251, 73, 52},  // red_bright
+	GitUntracked: Color{152, 151, 26},  // green
+	GitModified:  Color{215, 153, 33},  // yellow
+	GitAdded:     Color{184, 187, 38},  // green_bright
+	GitDeleted:   Color{251, 73, 52},   // red_bright
 	GitRenamed:   Color{131, 165, 152}, // blue_bright
-	GitConflict:  Color{204, 36, 29},  // red
+	GitConflict:  Color{204, 36, 29},   // red
 
 	// Long listing
 	Permissions: Color{142, 192, 124}, // aqua_bright

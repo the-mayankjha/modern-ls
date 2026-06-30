@@ -92,17 +92,24 @@ func (l *Long) Render(w io.Writer, entries []*filesystem.Entry, _ int, opts Opti
 
 		// Name
 		name := e.FullName + string(e.Indicator)
-		gc := ""
-		gcReset := ""
-		if opts.Colors && e.GitStatus != "" {
-			gc = gitColorStr(e.GitStatus, opts)
-			gcReset = reset
+		nc := entryColorStr(e, opts)
+		ncReset := ""
+		if nc != "" {
+			ncReset = reset
 		}
-		fmt.Fprintf(&sb, "%s%s%s", gc, name, gcReset)
+		fmt.Fprintf(&sb, "%s%s%s", nc, name, ncReset)
 
-		// Git status
+		// Git column
 		if opts.ShowGit && e.GitStatus != "" {
-			fmt.Fprintf(&sb, " %s%s%s", gc, e.GitStatus, gcReset)
+			gc := ""
+			gcReset := ""
+			if opts.Colors {
+				gc = gitColorStr(e.GitStatus, opts)
+				if gc != "" {
+					gcReset = reset
+				}
+			}
+			fmt.Fprintf(&sb, "%s%s%s%s", brailSep, gc, e.GitStatus, gcReset)
 		}
 
 		fmt.Fprintln(w, sb.String())

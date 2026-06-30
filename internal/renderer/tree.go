@@ -27,17 +27,17 @@ func (t *Tree) RenderEntry(w io.Writer, e *filesystem.Entry, opts Options) {
 	if t.IsLast {
 		branch = "└── "
 	}
-	
+
 	// Create a long format string if ShowMode is true
 	var details string
 	// We'll skip the complex Long format in tree view for now to keep it clean.
-	
+
 	name := e.Name
 	if e.IsHidden {
 		name = "." + name
 	}
 	name += e.Ext
-	
+
 	icon := ""
 	if opts.Icons {
 		c := ""
@@ -46,16 +46,21 @@ func (t *Tree) RenderEntry(w io.Writer, e *filesystem.Entry, opts Options) {
 		}
 		icon = c + e.Icon + noColor + " "
 	}
-	
-	gc := ""
-	gcReset := ""
-	if opts.Colors && e.GitStatus != "" {
-		gc = gitColor(strings.TrimSpace(e.GitStatus), opts.Theme)
-		gcReset = noColor
+
+	nc := entryColorStr(e, opts)
+	ncReset := ""
+	if nc != "" {
+		ncReset = noColor
 	}
-	
+
 	gitStr := ""
 	if opts.ShowGit && e.GitStatus != "" && e.GitStatus != " " {
+		gc := ""
+		gcReset := ""
+		if opts.Colors {
+			gc = gitColor(strings.TrimSpace(e.GitStatus), opts.Theme)
+			gcReset = noColor
+		}
 		gitStr = " [" + gc + strings.TrimSpace(e.GitStatus) + gcReset + "]"
 	}
 
@@ -64,5 +69,5 @@ func (t *Tree) RenderEntry(w io.Writer, e *filesystem.Entry, opts Options) {
 		ind = string(e.Indicator)
 	}
 
-	fmt.Fprintf(w, "%s%s%s%s%s%s%s%s\n", t.Prefix, branch, details, icon, gc, name, gcReset, ind+gitStr)
+	fmt.Fprintf(w, "%s%s%s%s%s%s%s%s\n", t.Prefix, branch, details, icon, nc, name, ncReset, ind+gitStr)
 }

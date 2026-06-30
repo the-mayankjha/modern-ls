@@ -111,11 +111,30 @@ func Run(args []string, stdout io.Writer) exitCode {
 		return exitOK
 	}
 
+	// ── Load config ─────────────────────────────────────────────────────────
+	var cfg config.Config
+	var cfgErr error
+	if *fConfig != "" {
+		cfg, cfgErr = config.LoadFrom(*fConfig)
+	} else {
+		cfg, cfgErr = config.Load()
+	}
+	if cfgErr != nil {
+		log.Printf("modern-ls: config: %v", cfgErr)
+	}
+
+	themeName := cfg.Display.Theme
+	if *fTheme != "" {
+		themeName = *fTheme
+	}
+	theme := themes.Get(themeName)
+
 	// ── Info ────────────────────────────────────────────────────────────────
 	if *fInfo {
 		fmt.Fprintf(stdout, "\033[1;36mmodern-ls\033[0m %s\n", Version)
 		fmt.Fprintf(stdout, "\033[33mCommit:\033[0m %s\n\033[33mBuild Date:\033[0m %s\n\033[33mBuilt By:\033[0m %s\n\n", Commit, Date, BuiltBy)
 		fmt.Fprintf(stdout, "\033[32mA modern, cross-platform replacement for 'ls' written in Go.\033[0m\n\n")
+		fmt.Fprintf(stdout, "\033[35mTheme:\033[0m     %s\n", themeName)
 		fmt.Fprintf(stdout, "\033[35mAuthor:\033[0m    Mayank Kumar Jha\n")
 		fmt.Fprintf(stdout, "\033[35mPortfolio:\033[0m \033[4;34mhttps://mayankjha.nfks.co.in/\033[0m\n")
 		fmt.Fprintf(stdout, "\033[35mGitHub:\033[0m    \033[4;34mhttps://github.com/the-mayankjha\033[0m\n")
@@ -137,18 +156,6 @@ func Run(args []string, stdout io.Writer) exitCode {
 		return exitOK
 	}
 
-	// ── Load config ─────────────────────────────────────────────────────────
-	var cfg config.Config
-	var cfgErr error
-	if *fConfig != "" {
-		cfg, cfgErr = config.LoadFrom(*fConfig)
-	} else {
-		cfg, cfgErr = config.Load()
-	}
-	if cfgErr != nil {
-		log.Printf("modern-ls: config: %v", cfgErr)
-	}
-
 	// ── Apply flag overrides on top of config ────────────────────────────────
 	// Colors: disabled if -c flag; enabled by default (auto TTY detection)
 	useColors := cfg.Display.Colors
@@ -166,12 +173,6 @@ func Run(args []string, stdout io.Writer) exitCode {
 	}
 
 	useGit := cfg.Display.Git || *fD
-
-	themeName := cfg.Display.Theme
-	if *fTheme != "" {
-		themeName = *fTheme
-	}
-	theme := themes.Get(themeName)
 
 	// ── Determine sort strategy ──────────────────────────────────────────────
 	sortStrategy := pickSort(*fS, *ft, *fX, *fv, *fU, *fr)

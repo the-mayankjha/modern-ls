@@ -18,7 +18,7 @@ func TestModernLs_E2E(t *testing.T) {
 
 	// Create test directory structure
 	testDir := t.TempDir()
-	
+
 	// Create some dummy files
 	files := []string{
 		"Makefile",
@@ -27,14 +27,14 @@ func TestModernLs_E2E(t *testing.T) {
 		".gitignore",
 		"script.sh",
 	}
-	
+
 	for _, f := range files {
 		cmd = exec.Command("touch", filepath.Join(testDir, f))
 		if err := cmd.Run(); err != nil {
 			t.Fatalf("failed to touch %s: %v", f, err)
 		}
 	}
-	
+
 	// Make script.sh executable
 	cmd = exec.Command("chmod", "+x", filepath.Join(testDir, "script.sh"))
 	if err := cmd.Run(); err != nil {
@@ -48,7 +48,7 @@ func TestModernLs_E2E(t *testing.T) {
 		".git",
 		"regular_folder",
 	}
-	
+
 	for _, d := range dirs {
 		cmd = exec.Command("mkdir", filepath.Join(testDir, d))
 		if err := cmd.Run(); err != nil {
@@ -68,19 +68,19 @@ func TestModernLs_E2E(t *testing.T) {
 	}
 
 	output := out.String()
-	
+
 	expected := []string{
-		"⠀.git", // Custom folder
-		"⠀.gitignore", // ByExtension / ByFilename
-		"⠀admin", // Custom semantic folder
-		"󰂺⠀README.md", // ByExtension / ByFilename
+		"⠀.git",           // Custom folder
+		"⠀.gitignore",     // ByExtension / ByFilename
+		"⠀admin",          // Custom semantic folder
+		"󰂺⠀README.md",      // ByExtension / ByFilename
 		"⠀regular_folder", // Default folder fallback
-		"⠀main.go", // ByExtension
-		"⠀Makefile", // ByFilename
-		"⠀script.sh", // Executable (.sh)
-		"⠀src", // Custom folder
+		"⠀main.go",        // ByExtension
+		"⠀Makefile",       // ByFilename
+		"⠀script.sh",      // Executable (.sh)
+		"⠀src",            // Custom folder
 	}
-	
+
 	for _, exp := range expected {
 		if !strings.Contains(output, exp) {
 			t.Errorf("expected output to contain %q, got:\n%s", exp, output)

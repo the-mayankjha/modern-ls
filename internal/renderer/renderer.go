@@ -3,6 +3,7 @@ package renderer
 
 import (
 	"io"
+	"io/fs"
 
 	"github.com/the-mayankjha/modern-ls/internal/filesystem"
 	"github.com/the-mayankjha/modern-ls/internal/themes"
@@ -48,4 +49,37 @@ func gitColor(status string, t *themes.Theme) string {
 	default:
 		return t.GitModified.ANSI()
 	}
+}
+
+// entryColorStr returns the ANSI color for a filesystem entry based on its type.
+func entryColorStr(e *filesystem.Entry, opts Options) string {
+	if !opts.Colors || opts.Theme == nil {
+		return ""
+	}
+	t := opts.Theme
+	if e.Mode.IsDir() {
+		if e.IsHidden {
+			return t.HiddenDir.ANSI()
+		}
+		return t.Dir.ANSI()
+	}
+	if e.Mode&fs.ModeSymlink != 0 {
+		return t.Symlink.ANSI()
+	}
+	if e.Mode&fs.ModeNamedPipe != 0 {
+		return t.Pipe.ANSI()
+	}
+	if e.Mode&fs.ModeSocket != 0 {
+		return t.Socket.ANSI()
+	}
+	if e.Mode&fs.ModeDevice != 0 || e.Mode&fs.ModeCharDevice != 0 {
+		return t.Special.ANSI()
+	}
+	if e.Mode&0111 != 0 {
+		return t.Executable.ANSI()
+	}
+	if e.IsHidden {
+		return t.HiddenFile.ANSI()
+	}
+	return t.File.ANSI()
 }
