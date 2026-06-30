@@ -9,6 +9,7 @@ A beautiful, extremely fast, modern replacement for Unix `ls`, written in Go.
 `modern-ls` is a highly-optimized directory lister that features:
 - 🎨 **Icons**: Real `nvim-web-devicons` support baked natively, rendering Nerd Font v3 icons for every file, folder, and extension.
 - 🌳 **Semantic Folders**: Folders like `src`, `web`, `admin`, `scripts`, etc., get custom icons for easy spotting.
+- 🌲 **Tree View**: Natively render directories as recursive branch trees (with `--depth` limits).
 - 🐙 **Git Status**: Instantly highlights untracked, modified, added, or deleted files.
 - ⚡ **Blazing Fast**: Written in pure Go, taking heavy advantage of concurrent directory traversal and optimized grid rendering to beat standard Python or Ruby tools.
 - 🛠️ **Cross Platform**: Works flawlessly on macOS (Apple Silicon natively supported), Linux, and Windows.
@@ -41,6 +42,9 @@ modern-ls -at
 
 # Display Git statuses
 modern-ls -D
+
+# Render directories as a tree (limited to a depth of 2)
+modern-ls --tree --depth=2
 ```
 
 By default, the grid view is used. You can force one-per-line using `-1`.
