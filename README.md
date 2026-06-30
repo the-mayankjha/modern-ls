@@ -16,6 +16,9 @@
 
 `modern-ls` is a cross-platform (Windows, macOS, Linux) CLI utility that brings the classic `ls` command into the 21st century. It features native Git integration, highly customizable Nerd Font and Emoji icons, vibrant color themes, and an incredibly fast recursive tree-view mode.
 
+<img width="1200" height="800" alt="demo" src="https://github.com/user-attachments/assets/7a10a465-4173-4863-be3f-1ae7bbfcea8e" />
+
+
 ## ✨ Features
 
 - 🎨 **Beautiful Color Themes:** Built-in support for popular themes like `catppuccin` (default), `tokyonight`, `gruvbox`, `dracula`, `nord`, and `rose-pine`.
@@ -50,6 +53,9 @@
   <img alt="Gruvbox Theme" src="https://github.com/user-attachments/assets/f667b8dd-0abb-4193-8dc2-05d8a84fb447" />
   <p><em>Gruvbox Theme</em></p>
 </div>
+
+<img width="1200" height="800" alt="themes" src="https://github.com/user-attachments/assets/35eeaea0-80de-4adc-8c40-79a238529e7c" />
+
 
 To switch themes on the fly, just use the `--theme` flag:
 ```bash
