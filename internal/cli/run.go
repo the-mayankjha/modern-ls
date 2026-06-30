@@ -105,22 +105,22 @@ func Run(args []string, stdout io.Writer) exitCode {
 
 	// ── Version ─────────────────────────────────────────────────────────────
 	if *fVersion {
-		fmt.Fprintf(stdout, "modern-ls %s\n", Version)
-		fmt.Fprintf(stdout, "Commit: %s\nBuild Date: %s\nBuilt By: %s\n\n", Commit, Date, BuiltBy)
-		fmt.Fprintf(stdout, "Copyright (c) 2026 Mayank Kumar Jha\nLicense MIT <https://opensource.org/licenses/MIT>\nThis is free software: you are free to change and redistribute it.\nThere is NO WARRANTY, to the extent permitted by law.\n\nWritten by Mayank Kumar Jha\n")
+		fmt.Fprintf(stdout, "\033[1;36mmodern-ls\033[0m %s\n", Version)
+		fmt.Fprintf(stdout, "\033[33mCommit:\033[0m %s\n\033[33mBuild Date:\033[0m %s\n\033[33mBuilt By:\033[0m %s\n\n", Commit, Date, BuiltBy)
+		fmt.Fprintf(stdout, "\033[90mCopyright (c) 2026 Mayank Kumar Jha\nLicense MIT <https://opensource.org/licenses/MIT>\nThis is free software: you are free to change and redistribute it.\nThere is NO WARRANTY, to the extent permitted by law.\033[0m\n\nWritten by Mayank Kumar Jha\n")
 		return exitOK
 	}
 
 	// ── Info ────────────────────────────────────────────────────────────────
 	if *fInfo {
-		fmt.Fprintf(stdout, "modern-ls %s\n", Version)
-		fmt.Fprintf(stdout, "Commit: %s\nBuild Date: %s\nBuilt By: %s\n\n", Commit, Date, BuiltBy)
-		fmt.Fprintf(stdout, "A modern, cross-platform replacement for 'ls' written in Go.\n\n")
-		fmt.Fprintf(stdout, "Author:   Mayank Kumar Jha\n")
-		fmt.Fprintf(stdout, "Portfolio: https://mayankjha.nfks.co.in/\n")
-		fmt.Fprintf(stdout, "GitHub:   https://github.com/the-mayankjha\n")
-		fmt.Fprintf(stdout, "LinkedIn: https://linkedin.com/in/the-mayankjha\n\n")
-		fmt.Fprintf(stdout, "Copyright (c) 2026 Mayank Kumar Jha\n")
+		fmt.Fprintf(stdout, "\033[1;36mmodern-ls\033[0m %s\n", Version)
+		fmt.Fprintf(stdout, "\033[33mCommit:\033[0m %s\n\033[33mBuild Date:\033[0m %s\n\033[33mBuilt By:\033[0m %s\n\n", Commit, Date, BuiltBy)
+		fmt.Fprintf(stdout, "\033[32mA modern, cross-platform replacement for 'ls' written in Go.\033[0m\n\n")
+		fmt.Fprintf(stdout, "\033[35mAuthor:\033[0m    Mayank Kumar Jha\n")
+		fmt.Fprintf(stdout, "\033[35mPortfolio:\033[0m \033[4;34mhttps://mayankjha.nfks.co.in/\033[0m\n")
+		fmt.Fprintf(stdout, "\033[35mGitHub:\033[0m    \033[4;34mhttps://github.com/the-mayankjha\033[0m\n")
+		fmt.Fprintf(stdout, "\033[35mLinkedIn:\033[0m  \033[4;34mhttps://linkedin.com/in/the-mayankjha\033[0m\n\n")
+		fmt.Fprintf(stdout, "\033[90mCopyright (c) 2026 Mayank Kumar Jha\033[0m\n")
 		return exitOK
 	}
 
