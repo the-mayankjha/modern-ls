@@ -118,8 +118,8 @@ func Run(args []string, stdout io.Writer) exitCode {
 		fmt.Fprintf(stdout, "A modern, cross-platform replacement for 'ls' written in Go.\n\n")
 		fmt.Fprintf(stdout, "Author:   Mayank Kumar Jha\n")
 		fmt.Fprintf(stdout, "Portfolio: https://mayankjha.nfks.co.in/\n")
-		fmt.Fprintf(stdout, "GitHub:   github.com/the-mayankjha\n")
-		fmt.Fprintf(stdout, "LinkedIn: the-mayankjha\n\n")
+		fmt.Fprintf(stdout, "GitHub:   https://github.com/the-mayankjha\n")
+		fmt.Fprintf(stdout, "LinkedIn: https://linkedin.com/in/the-mayankjha\n\n")
 		fmt.Fprintf(stdout, "Copyright (c) 2026 Mayank Kumar Jha\n")
 		return exitOK
 	}
