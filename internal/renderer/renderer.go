@@ -4,6 +4,7 @@ package renderer
 import (
 	"io"
 	"io/fs"
+	"strings"
 
 	"github.com/the-mayankjha/modern-ls/internal/filesystem"
 	"github.com/the-mayankjha/modern-ls/internal/themes"
@@ -57,6 +58,11 @@ func entryColorStr(e *filesystem.Entry, opts Options) string {
 		return ""
 	}
 	t := opts.Theme
+	if opts.ShowGit && e.GitStatus != "" && e.GitStatus != " " {
+		if gc := gitColor(strings.TrimSpace(e.GitStatus), t); gc != "" {
+			return gc
+		}
+	}
 	if e.Mode.IsDir() {
 		if e.IsHidden {
 			return t.HiddenDir.ANSI()
@@ -82,4 +88,18 @@ func entryColorStr(e *filesystem.Entry, opts Options) string {
 		return t.HiddenFile.ANSI()
 	}
 	return t.File.ANSI()
+}
+
+// iconColorStr returns the ANSI color for a filesystem entry's icon.
+// It prioritizes Git status colors if enabled, falling back to the default icon color.
+func iconColorStr(e *filesystem.Entry, opts Options) string {
+	if !opts.Colors || opts.Theme == nil {
+		return ""
+	}
+	if opts.ShowGit && e.GitStatus != "" && e.GitStatus != " " {
+		if gc := gitColor(strings.TrimSpace(e.GitStatus), opts.Theme); gc != "" {
+			return gc
+		}
+	}
+	return e.IconColor
 }

@@ -224,7 +224,7 @@ func buildCells(entries []*filesystem.Entry, opts Options) []cell {
 		name := e.FullName + string(e.Indicator)
 		c := cell{
 			icon:      e.Icon,
-			iconColor: e.IconColor,
+			iconColor: iconColorStr(e, opts),
 			name:      name,
 			nameColor: entryColorStr(e, opts),
 			git:       e.GitStatus,

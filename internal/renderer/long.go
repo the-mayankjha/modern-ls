@@ -87,7 +87,7 @@ func (l *Long) Render(w io.Writer, entries []*filesystem.Entry, _ int, opts Opti
 
 		// Icon
 		if opts.Icons {
-			fmt.Fprintf(&sb, "%s%s%s%s", e.IconColor, e.Icon, reset, brailSep)
+			fmt.Fprintf(&sb, "%s%s%s%s", iconColorStr(e, opts), e.Icon, reset, brailSep)
 		}
 
 		// Name

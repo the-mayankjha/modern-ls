@@ -42,7 +42,7 @@ func (t *Tree) RenderEntry(w io.Writer, e *filesystem.Entry, opts Options) {
 	if opts.Icons {
 		c := ""
 		if opts.Colors {
-			c = e.IconColor
+			c = iconColorStr(e, opts)
 		}
 		icon = c + e.Icon + noColor + " "
 	}

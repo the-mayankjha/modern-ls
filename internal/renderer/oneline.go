@@ -26,7 +26,7 @@ func (o *OneLine) Render(w io.Writer, entries []*filesystem.Entry, _ int, opts O
 
 		// Icon
 		if opts.Icons && e.Icon != "" {
-			fmt.Fprintf(w, "%s%s%s%s", e.IconColor, e.Icon, reset, brailSep)
+			fmt.Fprintf(w, "%s%s%s%s", iconColorStr(e, opts), e.Icon, reset, brailSep)
 		}
 
 		// Name

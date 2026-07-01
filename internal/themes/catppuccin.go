@@ -31,7 +31,7 @@ var catppuccinTheme = &Theme{
 
 	// Git status
 	GitUntracked: Color{166, 227, 161}, // Green
-	GitModified:  Color{250, 179, 135}, // Peach
+	GitModified:  Color{243, 139, 168}, // Red (Updated to make modifications pop)
 	GitAdded:     Color{166, 227, 161}, // Green
 	GitDeleted:   Color{243, 139, 168}, // Red
 	GitRenamed:   Color{116, 199, 236}, // Sapphire
